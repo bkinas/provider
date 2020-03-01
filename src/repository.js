@@ -9,7 +9,7 @@ class Repository {
     }
 
     getById(id) {
-        return this.entities.find(entity => id == entity.id)
+        return this.entities.find(entity => id === entity.id)
     }
 
     insert(entity) {
@@ -21,4 +21,4 @@ class Repository {
     }
 }
 
-module.exports = Repository
+module.exports = Repository;

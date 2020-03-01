@@ -38,23 +38,6 @@ const importData = () => {
     }, 0)
 };
 
-// List all users with 'available' eligibility
-const availableUsers = () => {
-    return userRepository.fetchAll().filter(a => {
-        return a.eligibility.available
-    })
-};
-
-// Get all users
-server.get("/users", (req, res) => {
-    res.json(userRepository.fetchAll())
-});
-
-// Get all active users
-server.get("/users/available", (req, res) => {
-    res.json(availableUsers())
-});
-
 // Find an user by ID
 server.get("/users/:id", (req, res) => {
     const response = userRepository.getById(req.params.id);
@@ -71,7 +54,7 @@ server.post("/users", (req, res) => {
     const user = req.body;
 
     // Really basic validation
-    if (!user || !user.first_name) {
+    if (!user || !user.name) {
         res.writeHead(400);
         res.end();
 
